@@ -20,10 +20,10 @@ var server = new mosca.Server(settings, function() {
   console.log('Mosca server is up and running')
 });
  
-server.published = function(packet, client, cb) {
-  console.log('packet', packet);
+server.published = function(packet, client) {
+  console.log('packet', packet);/*
   if (packet.topic.indexOf('echo') === 0) {
-    return cb();
+    return cb();*/
   }
  
 server.on('clientConnected', function(client){
@@ -34,7 +34,7 @@ server.on('clientDisconnected', function(client){
   console.log('Client Disconnected:', client.id)
 });
 
-
+/*
   var newPacket = {
     topic: 'echo/' + packet.topic,
     payload: packet.payload,
@@ -46,3 +46,4 @@ server.on('clientDisconnected', function(client){
   
   server.publish(newPacket, cb);
 }
+*/
