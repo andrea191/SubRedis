@@ -26,13 +26,13 @@ server.published = function(packet, client, cb) {
     return cb();
   }
  
-server.clientConnected = function(client){
-  console.log('Client Connected:', client);
-}
+server.on('clientConnected', function(client){
+  console.log('Client Connected:', client)
+});
 
-server.clientDisconnected = function(client){
-  console.log('Client Disconnected:', client);
-}
+server.on('clientDisconnected', function(client){
+  console.log('Client Disconnected:', client)
+});
 
 
   var newPacket = {
