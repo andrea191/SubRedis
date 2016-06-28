@@ -27,11 +27,11 @@ server.published = function(packet, client, cb) {
   }
  
 server.on('clientConnected', function(client){
-  console.log('Client Connected:', client)
+  console.log('Client Connected:', client.id)
 });
 
 server.on('clientDisconnected', function(client){
-  console.log('Client Disconnected:', client)
+  console.log('Client Disconnected:', client.id)
 });
 
 
