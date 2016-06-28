@@ -9,11 +9,11 @@ var pubsubsettings = {
 
 var settings = {
   port: 1883,
-  backend: pubsubsettings,
+  backend: pubsubsettings/*,
   persistence: {
     factory: mosca.persistence.Mongo,
     url: 'mongodb://localhost:27017/mqtt'
-  }
+  }*/
 };
  
 var server = new mosca.Server(settings, function() {
