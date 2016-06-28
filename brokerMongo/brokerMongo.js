@@ -9,7 +9,11 @@ var pubsubsettings = {
 
 var settings = {
   port: 1883,
-  backend: pubsubsettings 
+  backend: pubsubsettings,
+  persistence: {
+    factory: mosca.persistence.Mongo,
+    url: 'mongodb://localhost:27017/mqtt'
+  }
 };
  
 var server = new mosca.Server(settings, function() {
@@ -17,12 +21,20 @@ var server = new mosca.Server(settings, function() {
 });
  
 server.published = function(packet, client, cb) {
-  console.log('client connected', client);
   console.log('packet', packet);
   if (packet.topic.indexOf('echo') === 0) {
     return cb();
   }
  
+server.clientConnected = function(client){
+  console.log('Client Connected:', client);
+}
+
+server.clientDisconnected = function(client){
+  console.log('Client Disconnected:', client);
+}
+
+
   var newPacket = {
     topic: 'echo/' + packet.topic,
     payload: packet.payload,
