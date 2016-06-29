@@ -20,7 +20,7 @@ sensor.getAll(function(err, tempObj){
 	console.log(tempObj);
 });*/
 
-sensor.get(sensor1, function(err, temp){
+sensor.get('28-000006afa537', function(err, temp){
 	if (err) {
 		console.log('something happened:', err);
 	} else {
