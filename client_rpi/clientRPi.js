@@ -21,5 +21,10 @@ sensor.getAll(function(err, tempObj){
 });*/
 
 sensor.get(sensor1, function(err, temp){
-	console.log(temp);
+	if (err) {
+		console.log('something happened:', err);
+	} else {
+		console.log('sensor temperature:', temp);	
+	}
+	
 });
