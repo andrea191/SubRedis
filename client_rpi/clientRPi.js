@@ -1,19 +1,39 @@
 var sensor = require('ds18x20');
+var mqtt = require('mqtt')
+ 
+var client = mqtt.connect('mqtt://193.167.0.237:1883');
 
-var sensor1;
-
+//Discovering sensor on Gateway
 console.log(sensor.isDriverLoaded());
 
 var listOfDeviceIds = sensor.list();
 console.log(listOfDeviceIds);
+var serialTemp = listOfDeviceIds[0];
 
-sensor1 = listOfDeviceIds[0];
+//Introducing
+client.subscribe('sensor');
+client.publish('sensor', 'Hello, I am a new temperature sensor! My serial is:' + serialTemp + 'and I publish on "sensor/temperature" topic', [0, false]);
 
 
+//Publishing data
+
+ 
+client.end();
+
+//ASYNC FUNCTIONS
+
+//READ MESSAGE ON SUBSCRIBED TOPIC ? 
+client.on('message', function(topic, message) {
+	console.log(message);
+	console.log(message.toString());
+});
+
+//ANY x MILLISECONDS FETCH DATA TEMPERATURE FROM SENSOR AND PUBLISH DATA
 setInterval(cb, 2000);
-
 function cb() {
-	console.log(sensor.get(sensor1));	
+	var temp = sensor.get(serialTemp)+ Date();
+	client.publish('sensor/temperature', temp , [0, false]);
+	console.log(temp);
 }
 
 
