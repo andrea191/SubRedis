@@ -2,6 +2,22 @@ var sensor = require('ds18x20');
 
 var sensor1;
 
+console.log(sensor.isDriverLoaded());
+
+var listOfDeviceIds = sensor.list();
+console.log(listOfDeviceIds);
+
+sensor1 = listOfDeviceIds[0];
+
+console.log(sensor.get(sensor1));
+
+
+
+
+
+
+//ASYNC
+/*
 sensor.isDriverLoaded(function(err, isLoaded){
 	if (err) {
 		console.log('somenthing went wrong loading the driver:', err);
@@ -15,10 +31,10 @@ sensor.list(function(err, listOfDeviceIds){
 	console.log(sensor1);
 });
 
-/*
+
 sensor.getAll(function(err, tempObj){
 	console.log(tempObj);
-});*/
+});
 
 sensor.get('28-000006afa537', function(err, temp){
 	if (err) {
@@ -28,3 +44,5 @@ sensor.get('28-000006afa537', function(err, temp){
 	}
 	
 });
+
+*/
