@@ -1,7 +1,7 @@
 var sensor = require('ds18x20');
 var mqtt = require('mqtt')
  
-var client = mqtt.connect('mqtt://193.167.0.237:1883');
+var client = mqtt.connect('mqtt://localhost:1883');
 
 //Discovering sensor on Gateway
 console.log(sensor.isDriverLoaded());
