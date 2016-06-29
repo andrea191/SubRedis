@@ -1,20 +1,23 @@
 var mosca = require('mosca')
  
 var pubsubSettings = {
-    type: 'mongo',
-    url: 'mongodb://localhost:27017/mqtt',
-    pubsubCollection: 'ascoltatori',
-    mongo: {} //mongo specific options
+  type: 'mongo',
+  url: 'mongodb://localhost:27017/mqtt',
+  pubsubCollection: 'ascoltatori',
+  mongo: {} //mongo specific options
 };
+
+var persistenceSettings = {
+  factory: mosca.persistence.Mongo,
+  url: 'mongodb://localhost:27017/mqttEnd',
+  storeMessagesQos0: true
+}
 
 var moscaSettings = {
   port: 1883,
   id: 'macMosca',
-  backend: pubsubSettings/*,
-  persistence: {
-    factory: mosca.persistence.Mongo,
-    url: 'mongodb://localhost:27017/mqtt'
-  }*/
+  backend: pubsubSettings,
+  persistence: persistenceSettings
 };
  
 var server = new mosca.Server(moscaSettings, function() {
