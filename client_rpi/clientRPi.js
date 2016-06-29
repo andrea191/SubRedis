@@ -12,7 +12,7 @@ sensor1 = listOfDeviceIds[0];
 
 setTimeout(cb, 2000);
 
-function cb {
+function cb() {
 	console.log(sensor.get(sensor1));	
 }
 
