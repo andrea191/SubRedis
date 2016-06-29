@@ -2,6 +2,7 @@ var mqtt = require('mqtt')
  
 var client = mqtt.connect('mqtt://localhost:1883');
  
+console.log(client);
 //client.subscribe('presence');
 
 console.log('Client publishing.. ');
