@@ -27,7 +27,7 @@ setInterval(cb, 2000);
 function cb() {
 	var temperature = sensor.get(serialTemp);
 	var timestamp = Date();
-	var jsonString = '{ temperature:'+ temperature +', unit:Celsius, timestamp:'+timestamp+' }';
+	var jsonString = '{ \'temperature\':'+ temperature +', \'unit\':\'Celsius\', \'timestamp\':\''+timestamp+'\' }';
 	console.log(jsonString);
 	client.publish('sensor/temperature', jsonString , [0, false]);
 	

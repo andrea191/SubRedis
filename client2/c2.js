@@ -9,7 +9,8 @@ client.subscribe('sensor/temperature');
 
 client.on('message', function(topic, message) {
 	//console.log(message);
-	console.log(message.toString());
+	var object = JSON.parse(message.toString());
+	console.log(object);
 });
 
 console.log('Client started...');
