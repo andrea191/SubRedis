@@ -3,18 +3,48 @@ var mqtt = require('mqtt')
 var client = mqtt.connect('mqtt://localhost:1883');
 //var client = mqtt.connect('mqtt://test.mosquitto.org');
 
+//Database
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/mqttc2');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+  console.log('Ok, the database is connected!');
+})  
+
+var c2Schema = mongoose.Schema({
+	serial: String,
+	temperature: Number,
+	unit: String,
+	timestamp: String
+
+})
+
+var c2Mongo = mongoose.model('c2Mongo', c2Schema);
+
 client.subscribe('presence');
 client.subscribe('sensor');
 client.subscribe('sensor/temperature');
 
 client.on('message', function(topic, message) {
-	console.log('hello')
 	if (topic === 'sensor/temperature') {
-		console.log('if')
 		var object = JSON.parse(message.toString());
 		console.log(object);
+		c2Mongo.create(
+			{
+				serial: object['serial'],
+				temperature: object['temperature'],
+				unit: object['unit'],
+				timestamp: object['timestamp']
+			},
+			function(err, data){
+				if (err) {
+					throw err;
+				}
+				console.log(data);
+			});
 	} else {
-		console.log('else')
 		console.log(message.toString());
 	};
 	
