@@ -12,13 +12,7 @@ var serialTemp = listOfDeviceIds[0];
 
 //Introducing
 client.subscribe('sensor');
-client.publish('sensor', 'Hello, I am a new temperature sensor! My serial is:' + serialTemp + 'and I publish on "sensor/temperature" topic', [0, false]);
-
-
-//Publishing data
-
- 
-client.end();
+client.publish('sensor', 'Hello, I am a new temperature sensor! My serial is: ' + serialTemp + ' and I publish on "sensor/temperature" topic!', [0, false]);
 
 //ASYNC FUNCTIONS
 
