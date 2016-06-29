@@ -9,6 +9,7 @@ console.log(sensor.isDriverLoaded());
 var listOfDeviceIds = sensor.list();
 console.log(listOfDeviceIds);
 var serialTemp = listOfDeviceIds[0];
+var logCounter = 0;
 
 //Introducing
 client.subscribe('sensor');
@@ -27,10 +28,14 @@ setInterval(cb, 2000);
 function cb() {
 	var temperature = sensor.get(serialTemp);
 	var timestamp = Date();
-	var jsonString = '{ "serial":"'+serialTemp+'", "temperature":'+ temperature +', "unit":"Celsius", "timestamp":"'+timestamp+'" }';
+	var jsonString = '{ "serial":"'+serialTemp+'", 
+						"temperature":'+ temperature +', 
+						"unit":"Celsius", 
+						"timestamp":"'+timestamp+'", 
+						"log":' + logCounter+ '}';
 	console.log(jsonString);
 	client.publish('sensor/temperature', jsonString , [0, false]);
-	
+	logCounter++;
 }
 
 

@@ -17,7 +17,8 @@ var c2Schema = mongoose.Schema({
 	serial: String,
 	temperature: Number,
 	unit: String,
-	timestamp: String
+	timestamp: String,
+	log: Number
 
 })
 
@@ -36,13 +37,14 @@ client.on('message', function(topic, message) {
 				serial: object['serial'],
 				temperature: object['temperature'],
 				unit: object['unit'],
-				timestamp: object['timestamp']
+				timestamp: object['timestamp'],
+				log: object['log']
 			},
 			function(err, data){
 				if (err) {
 					throw err;
 				}
-				console.log(data);
+				//console.log(data);
 			});
 	} else {
 		console.log(message.toString());
