@@ -8,7 +8,7 @@ client.subscribe('sensor');
 client.subscribe('sensor/temperature');
 
 client.on('message', function(topic, message) {
-	console.log(message);
+	//console.log(message);
 	console.log(message.toString());
 });
 

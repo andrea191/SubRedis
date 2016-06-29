@@ -25,9 +25,12 @@ client.on('message', function(topic, message) {
 //ANY x MILLISECONDS FETCH DATA TEMPERATURE FROM SENSOR AND PUBLISH DATA
 setInterval(cb, 2000);
 function cb() {
-	var temp = sensor.get(serialTemp)+" - " + Date();
-	client.publish('sensor/temperature', temp , [0, false]);
-	console.log(temp);
+	var temperature = sensor.get(serialTemp);
+	var timestamp = Date();
+	var jsonString = '{ temperature:'+ temperature +',unit:Celsius, timestamp:'+timestamp+' }';
+	console.log(jsonString);
+	client.publish('sensor/temperature', jsonString , [0, false]);
+	
 }
 
 
