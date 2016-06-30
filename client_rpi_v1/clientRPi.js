@@ -39,7 +39,7 @@ function dataMessage() {
 	logCounter++;
 }
 
-setInterval(retainMessage, 10000);
+setInterval(retainMessage, 20000);
 function retainMessage() {
 	var jsonString = '{ "serial":"'+serialTemp+'", "log":' + logCounter+ '}';
 	console.log(jsonString);
