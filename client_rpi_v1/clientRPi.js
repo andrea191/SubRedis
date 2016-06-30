@@ -29,8 +29,8 @@ client.on('message', function(topic, message) {
 });
 
 //ANY x MILLISECONDS FETCH DATA TEMPERATURE FROM SENSOR AND PUBLISH DATA
-setInterval(cb, 2000);
-function cb() {
+setInterval(dataMessage, 1000);
+function dataMessage() {
 	var temperature = sensor.get(serialTemp);
 	var timestamp = Date();
 	var jsonString = '{ "serial":"'+serialTemp+'", "temperature":'+ temperature +', "unit":"Celsius", "timestamp":"'+timestamp+'", "log":' + logCounter+ '}';
@@ -39,8 +39,13 @@ function cb() {
 	logCounter++;
 }
 
-
-
+setInterval(retainMessage, 10000);
+function dataMessage() {
+	var jsonString = '{ "serial":"'+serialTemp+'", "log":' + logCounter+ '}';
+	console.log(jsonString);
+	client.publish('sensor/temperature', jsonString , [1, true]);
+	logCounter++;
+}
 
 
 
