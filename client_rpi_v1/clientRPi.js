@@ -43,8 +43,7 @@ setInterval(retainMessage, 10000);
 function retainMessage() {
 	var jsonString = '{ "serial":"'+serialTemp+'", "log":' + logCounter+ '}';
 	console.log(jsonString);
-	client.publish('sensor/temperature', jsonString , [1, true]);
-	logCounter++;
+	client.publish('sensor/temperature', jsonString , {qos:1, retain:true});
 }
 
 
