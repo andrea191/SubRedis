@@ -1,0 +1,15 @@
+{
+  "name": "client_rpi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clientRPi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ds18x20": "^0.2.0",
+    "mqtt": "^1.12.0"
+  }
+}
