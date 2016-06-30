@@ -40,7 +40,7 @@ function dataMessage() {
 }
 
 setInterval(retainMessage, 10000);
-function dataMessage() {
+function retainMessage() {
 	var jsonString = '{ "serial":"'+serialTemp+'", "log":' + logCounter+ '}';
 	console.log(jsonString);
 	client.publish('sensor/temperature', jsonString , [1, true]);
