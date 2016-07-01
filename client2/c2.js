@@ -26,7 +26,13 @@ var c2Mongo = mongoose.model('c2Mongo', c2Schema);
 
 client.subscribe('presence');
 client.subscribe('sensor');
-client.subscribe('sensor/temperature');
+client.subscribe('sensor/temperature', {qos: 1}, function(err, granted){
+	if (err) {
+		console.log('something bad is happened',err);
+	} else{
+		console.log('nice',granted);
+	};
+});
 
 client.on('message', function(topic, message) {
 	if (topic === 'sensor/temperature') {
