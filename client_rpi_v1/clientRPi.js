@@ -35,7 +35,7 @@ function dataMessage() {
 	var timestamp = Date();
 	var jsonString = '{ "serial":"'+serialTemp+'", "temperature":'+ temperature +', "unit":"Celsius", "timestamp":"'+timestamp+'", "log":' + logCounter+ '}';
 	console.log(jsonString);
-	client.publish('sensor/temperature', jsonString , {qos:0, retain:false});
+	client.publish('sensor/temperature', jsonString , {qos:1, retain:false});
 	logCounter++;
 }
 

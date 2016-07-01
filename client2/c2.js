@@ -5,7 +5,10 @@ var client = mqtt.connect('mqtt://localhost:1883');
 
 //Database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mqttc2');
+mongoose.connect('mongodb://localhost/mqttc2',{
+	clean: false,
+	clientId: 'client-mac'
+});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
