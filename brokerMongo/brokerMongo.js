@@ -1,19 +1,21 @@
 var mosca = require('mosca')
  
-var pubsubsettings = {
+var pubsubSettings = {
     type: 'mongo',
     url: 'mongodb://localhost:27017/mqtt',
     pubsubCollection: 'myCollections',
     mongo: {}
 };
 
+var persistenceSettings = {
+  factory: mosca.persistence.Mongo,
+  url: 'mongodb://localhost:27017/mqtt'
+}
+
 var settings = {
   port: 1883,
-  backend: pubsubsettings/*,
-  persistence: {
-    factory: mosca.persistence.Mongo,
-    url: 'mongodb://localhost:27017/mqtt'
-  }*/
+  backend: pubsubSettings,
+  persistence: persistenceSettings
 };
  
 var server = new mosca.Server(settings, function() {
