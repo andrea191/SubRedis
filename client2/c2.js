@@ -27,8 +27,9 @@ var c2Schema = mongoose.Schema({
 
 var c2Mongo = mongoose.model('c2Mongo', c2Schema);
 
-client.subscribe('presence');
-client.subscribe('sensor', {qos: 1});
+//client.subscribe('sensor', {qos:0});
+//client.subscribe('$SYS/broker-polimi/new/clients');
+//client.subscribe('$SYS/broker-polimi/disconnect/clients');
 client.subscribe('sensor/temperature', {qos: 1}, function(err, granted){
 	if (err) {
 		console.log('something bad is happened',err);

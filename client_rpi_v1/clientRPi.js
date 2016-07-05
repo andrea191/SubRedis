@@ -17,7 +17,7 @@ var client = mqtt.connect('mqtt://localhost:1883',{
 
 
 //Introducing
-client.subscribe('sensor');
+//client.subscribe('sensor');
 client.publish('sensor', 'Hello, I am a new temperature sensor! My serial is: ' + serialTemp + ' and I publish on "sensor/temperature" topic!', {qos:1, retain:true});
 
 //ASYNC FUNCTIONS
