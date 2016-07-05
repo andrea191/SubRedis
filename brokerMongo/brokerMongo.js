@@ -25,7 +25,7 @@ var server = new mosca.Server(settings, function() {
  
 server.on('published',function(packet, client) {
   //console.log('packet', packet)
-  console.log('topic', packet['payload']);
+  console.log('payload', packet['payload'].toString());
   /*
   if (packet.topic.indexOf('echo') === 0) {
     return cb();*/
