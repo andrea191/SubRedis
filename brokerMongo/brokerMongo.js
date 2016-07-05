@@ -13,6 +13,7 @@ var persistenceSettings = {
 }
 
 var settings = {
+  id: 'broker-polimi',
   port: 1883,
   backend: pubsubSettings,
   persistence: persistenceSettings
