@@ -24,7 +24,9 @@ var server = new mosca.Server(settings, function() {
 });
  
 server.on('published',function(packet, client) {
-  console.log('packet', packet)/*
+  //console.log('packet', packet)
+  console.log('topic', packet['payload']);
+  /*
   if (packet.topic.indexOf('echo') === 0) {
     return cb();*/
   });
