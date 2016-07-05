@@ -24,7 +24,6 @@ var client = mqtt.connect('mqtt://localhost:1883',{
 });
 
 
-
 //Introducing
 client.publish('sensor/temperature/new', clientName);
 client.publish('sensor/temperature/'+clientName+'/status', 'online', {qos:1, retain:true});
