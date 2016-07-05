@@ -65,7 +65,9 @@ server.on('published',function(packet, client) {
 });
  
 server.on('clientConnected', function(client){
+  console.log(client);
   console.log('Client Connected:', client.id)
+
 });
 
 server.on('clientDisconnected', function(client){
