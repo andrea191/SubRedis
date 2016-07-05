@@ -16,7 +16,7 @@ var client = mqtt.connect('mqtt://localhost:1883',{
 	clean: false,  //restore the session and in theory, it should receive the message for the qos1 subscribed topic
 	clientId: clientName,
 	will: {
-		topic: clientName+'/status',
+		topic: 'sensor/temperature/'+clientName+'/status',
 		payload: 'offline',
 		qos: 1,
 		retain: true
