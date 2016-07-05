@@ -10,7 +10,7 @@ console.log(listOfDeviceIds);
 var serialTemp = listOfDeviceIds[0];
 var logCounter = 0;
 
-var clientName = 'rpi-CLC';//+serialTemp;
+var clientName = 'rpi-'+serialTemp;
 
 var client = mqtt.connect('mqtt://localhost:1883',{
 	clean: false,  //restore the session and in theory, it should receive the message for the qos1 subscribed topic

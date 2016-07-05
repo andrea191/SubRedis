@@ -33,10 +33,36 @@ server.on('published',function(packet, client) {
   console.log('retain', packet['retain']);
   console.log('######################');
   console.log('');
-  /*
-  if (packet.topic.indexOf('echo') === 0) {
-    return cb();*/
+  
+  switch(packet['topic']){
+    case 'sensor/temperature/new':
+      var message = {
+      topic: '/sensor/temperature',
+      payload: packet['payload'].toString(), // or a Buffer
+      qos: 1, // 0, 1, or 2
+      retain: true // or true
+    };
+    server.publish(message, function() {
+      console.log('## -- SENSOR LIST UPDATED -- ##');
   });
+    default:
+  }
+  /*
+  if (packet['topic']==='sensor/temperature/new'){
+    var message = {
+      topic: '/sensor/temperature',
+      payload: packet['payload'].toString(), // or a Buffer
+      qos: 1, // 0, 1, or 2
+      retain: true // or true
+    };
+    server.publish(message, function() {
+      console.log('## -- SENSOR LIST UPDATED -- ##');
+  });
+  }
+  
+  */
+  
+});
  
 server.on('clientConnected', function(client){
   console.log('Client Connected:', client.id)
