@@ -1,14 +1,14 @@
 var mqtt = require('mqtt')
 
-var client = mqtt.connect('mqtt://localhost:1883');
+var client = mqtt.connect('mqtt://localhost:1883',{
+	clean: false,
+	clientId: 'client-mac'
+});
 //var client = mqtt.connect('mqtt://test.mosquitto.org');
 
 //Database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mqttc2',{
-	clean: false,
-	clientId: 'client-mac'
-});
+mongoose.connect('mongodb://localhost/mqttc2');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
