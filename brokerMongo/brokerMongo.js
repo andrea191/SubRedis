@@ -27,7 +27,7 @@ server.on('published',function(packet, client) {
   //console.log('packet', packet)
   console.log('## -- NEW PACKET -- ##');
   console.log('topic', packet['topic']);
-  console.log('payload', JSONparse(packet['payload'].toString());
+  console.log('payload', JSONparse(packet['payload'].toString()));
   console.log('qos', packet['qos']);
   console.log('retain', packet['retain']);
   console.log('######################');
